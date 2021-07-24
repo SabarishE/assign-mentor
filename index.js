@@ -12,7 +12,7 @@ const app=express();
 
 app.use(express.json());
 // testing
-app.get("/",(req,res)=>{res.send("Mentor - Student portal welcomes you !!!")});
+app.get("/",(req,res)=>{res.send(">>>>>Mentor - Student portal welcomes you<<<")});
 
 app.listen(PORT,console.log("server started"));
 
