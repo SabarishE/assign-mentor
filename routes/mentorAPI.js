@@ -36,7 +36,7 @@ mrouter.post("/addmentor",async(req,res)=>{
 
 // Asign student(s) to mentor (update - PATCH)
 
-mrouter.patch('/addstudent/:name', (req, res) => {
+mrouter.patch('/assignstudent/:name', (req, res) => {
 
 
     Mentor.findOneAndUpdate(
