@@ -19,10 +19,10 @@ app.get("/",(req,res)=>{res.send(">>>>>Mentor - Student portal welcomes you<<<")
 app.listen(PORT,console.log("server started"));
 
 
-const url="mongodb+srv://SabarishE:sabarishe@cluster0.eeimf.mongodb.net/msportal"
+// const url="mongodb+srv://SabarishE:sabarishe@cluster0.eeimf.mongodb.net/msportal"
 
 
-// const url= process.env.MONGODB_URI || "mongodb://localhost/msportal";
+const url= process.env.MONGODB_URI || "mongodb://localhost/msportal";
 
 mongoose.connect(url,{useNewUrlParser:true});
 
