@@ -62,7 +62,7 @@ mrouter.patch('/assignstudent/:name', (req, res) => {
 
 
 
-//--------pulling students--------
+//--------pu students--------
 
 mrouter.patch('/pullstud/:old', (req, res) => {
 
@@ -98,7 +98,7 @@ mrouter.patch('/pushstud/:new', (req, res) => {
     try{
         Mentor.findOneAndUpdate(
             {name:req.params.new}, 
-             {$push: {students :{$in: [...(req.body.students)]}}} 
+             {$push: {students :[...(req.body.students)]}} 
          ,{new: true}
              )
          
