@@ -60,11 +60,11 @@ mrouter.patch('/assignstudent/:name', (req, res) => {
     })
 })
 
-// Remove student(s) for a  mentor (update - PATCH)
 
 
+//--------pulling students--------
 
-mrouter.patch('/changestudentarr/:old/:new', (req, res) => {
+mrouter.patch('/pullstud/:old', (req, res) => {
 
 try{
     Mentor.findOneAndUpdate(
@@ -78,14 +78,7 @@ try{
              return res.status(404).send();
          }
          else{
-            Mentor.findOneAndUpdate(
-                {name:req.params.new}, 
-                 {$push: {students :{$in: [...(req.body.students)]}}} 
-             ,{new: true}
-                 )
-                 .then((n)=>
-                     res.send(n)
-                 )
+          res.send(m);
          }
          
      })
@@ -96,6 +89,38 @@ catch(err){
 }
     
 })
+
+
+//--------pushing students--------
+
+mrouter.patch('/pushstud/:new', (req, res) => {
+
+    try{
+        Mentor.findOneAndUpdate(
+            {name:req.params.new}, 
+             {$push: {students :{$in: [...(req.body.students)]}}} 
+         ,{new: true}
+             )
+         
+         .then((m) => {
+             if (!m) {
+                 return res.status(404).send();
+             }
+             else{
+              res.send(m);
+             }
+             
+         })
+    }
+    catch(err){
+        res.status(500).send(error);
+            console.log("error in finding mentor !!!!")
+    }
+        
+    })
+
+
+
 
 
 
